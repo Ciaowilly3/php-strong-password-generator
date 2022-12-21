@@ -1,22 +1,23 @@
 <?php
-$passwordLength = isset($_GET['passwordLength'])? $_GET['passwordLength'] : '';
-$passwordLength = (int)$passwordLength;
-var_dump($passwordLength);
-$password = passwordBuilder($passwordLength);
-function passwordBuilder($lenght)
-{
-    $lilChar = 'abcdefghjklmnopqrstuvwxyz';
-    $bigChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $numbers = '1234567890';
-    $symbols = '#$@!?><|+_-*&^%';
-    $totals = $lilChar . $bigChar . $numbers . $symbols;
-    $toReturn = '';
-    for ($i=0; $i < $lenght; $i++) {
-        $randNum = rand(0, strlen($totals)); 
-        $toReturn = $toReturn . $totals[$randNum];
+    $passwordLength = isset($_GET['passwordLength'])? $_GET['passwordLength'] : '';
+    $passwordLength = (int)$passwordLength;
+    var_dump($passwordLength);
+    $password = passwordBuilder($passwordLength);
+    function passwordBuilder($lenght)
+    {
+        $lilChar = 'abcdefghjklmnopqrstuvwxyz';
+        $bigChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $numbers = '1234567890';
+        $symbols = '#$@!?><|+_-*&^%';
+        $totals = $lilChar . $bigChar . $numbers . $symbols;
+        $toReturn = '';
+        for ($i=0; $i < $lenght; $i++) {
+            $randNum = rand(0, strlen($totals)); 
+            $toReturn = $toReturn . $totals[$randNum];
+        }
+        return $toReturn;
     }
-    return $toReturn;
-}
+    var_dump($password);
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ function passwordBuilder($lenght)
             <h3 class="text-center text-white mb-5">Genere una password sicura</h3>
 
             <form action="" method="$_GET">
-                <div class="container bg-white text-center border border-secondary rounded">
+                  <div class="container bg-white text-center border border-secondary rounded">
                     <div class="py-3 w-50 m-auto">
                         <input type="number" name="passwordLength"  <?php "value='$passwordLength' "?>  class="form-control" placeholder="Inserisci la lunghezza della password da generare">
                     </div>
