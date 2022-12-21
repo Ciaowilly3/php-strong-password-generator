@@ -13,7 +13,7 @@ function passwordBuilder($lenght)
     $totals = $lilChar . $bigChar . $numbers . $symbols;
     $toReturn = '';
     for ($i=0; $i < $lenght; $i++) {
-        $randNum = rand(0, strlen($totals)); 
+        $randNum = rand(0, strlen($totals) - 1); 
         $toReturn = $toReturn . $totals[$randNum];
     }
     return $toReturn;
