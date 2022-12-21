@@ -1,23 +1,5 @@
 <?php
-    $passwordLength = isset($_GET['passwordLength'])? $_GET['passwordLength'] : '';
-    $passwordLength = (int)$passwordLength;
-    var_dump($passwordLength);
-    $password = passwordBuilder($passwordLength);
-    function passwordBuilder($lenght)
-    {
-        $lilChar = 'abcdefghjklmnopqrstuvwxyz';
-        $bigChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $numbers = '1234567890';
-        $symbols = '#$@!?><|+_-*&^%';
-        $totals = $lilChar . $bigChar . $numbers . $symbols;
-        $toReturn = '';
-        for ($i=0; $i < $lenght; $i++) {
-            $randNum = rand(0, strlen($totals)); 
-            $toReturn = $toReturn . $totals[$randNum];
-        }
-        return $toReturn;
-    }
-    var_dump($password);
+    include_once "functions.php";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +8,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title></title>
+        <title>Passgen</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="css/style.css">
